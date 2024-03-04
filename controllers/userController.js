@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel'); // Import user model
-const Faculty = require('../models/facultyModel');
+
 
 // Create a new user
 const signup = async (req, res) => {
@@ -32,7 +32,7 @@ const signup = async (req, res) => {
       email,
       password: hashedPassword,
       role,
-      faculty: faculty._id, // Assuming you have a foreign key relationship
+    
     });
 
     await newUser.save();

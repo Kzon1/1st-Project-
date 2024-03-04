@@ -23,11 +23,6 @@ const userSchema = new mongoose.Schema({
     enum: ['student', 'coordinator', 'manager', 'guest'],
     required: true
   },
-  faculty: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Faculty',
-    required: false
-  }
 });
 
 // Password hashing before saving

@@ -5,9 +5,9 @@ const app = express();
 const dbConnection = require('./configs/database');
 var bodyParser = require("body-parser");
 const userRouter = require('./routes/userRoute'); 
-const facultyRouter = require('./routes/facultyRoute');
+ 
 const submissionRouter = require('./routes/submissionRoutes');
-
+const productRoute = require('./routes/productRoute');
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({
@@ -23,8 +23,8 @@ app.use(function middleware(req, res, next) {;//[]
 
 app.use('/api/user', userRouter);
 app.use('/api/submission', submissionRouter);
-app.use('/api/faculty', facultyRouter);
 
+app.use('/api/product', productRoute);
 
 
 dbConnection();
