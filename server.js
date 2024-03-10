@@ -1,13 +1,19 @@
+/////////////////////////////////////////////
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const app = express();
 const dbConnection = require('./configs/database');
 var bodyParser = require("body-parser");
+///////////////////////////////////////////
 const userRouter = require('./routes/userRoute'); 
- 
-const submissionRouter = require('./routes/submissionRoutes');
-const productRoute = require('./routes/productRoute');
+const brandRoutes = require('./routes/brandRoutes');
+const carRoutes = require('./routes/carRoutes');
+const modelRoutes = require('./routes/modelRoutes');
+const saleRoutes = require('./routes/saleRoutes');
+const manufacturerRoutes = require('./routes/manufacturerRoutes');
+const serviceAppointmentRoutes = require('./routes/serviceAppointmentRoutes');
+///////////////////////////////////////////////
 app.use(cors());
 app.use(express.json());
 app.use(bodyParser.urlencoded({
@@ -20,13 +26,15 @@ app.use(function middleware(req, res, next) {;//[]
     console.log(simpleLogger);
     next();
   });
-
+/////////////////////////////////////////////////////////////
 app.use('/api/user', userRouter);
-app.use('/api/submission', submissionRouter);
-
-app.use('/api/product', productRoute);
-
-
+app.use('/api/brands', brandRoutes);
+app.use('/api/cars', carRoutes);
+app.use('/api/models', modelRoutes);
+app.use('/api/sales', saleRoutes);
+app.use('/api/manufacturers', manufacturerRoutes);
+app.use('/api/service-appointments', serviceAppointmentRoutes);
+///////////////////////////////////////////////////////////////
 dbConnection();
 app.get('/message', (req, res) => {
     res.json({ message: "Hello from server!" });
