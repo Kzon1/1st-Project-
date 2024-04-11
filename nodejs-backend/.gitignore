@@ -1,7 +1,0 @@
-# dependencies
-node_modules
-
-# misc
-.DS_Store
-.env
-JWT_SECRET=your-secret-key
