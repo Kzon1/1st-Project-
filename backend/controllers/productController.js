@@ -3,11 +3,15 @@ import orderModel from "../models/orderModel.js";
 import productModel from "../models/productModel.js";
 
 import braintree from "braintree";
+import e from "cors";
 import dotenv from "dotenv";
 import fs from "fs";
 import slugify from "slugify";
 
 dotenv.config();
+
+
+
 
 //payment gateway
 var gateway = new braintree.BraintreeGateway({
@@ -332,15 +336,19 @@ export const productCategoryController = async (req, res) => {
 //token
 export const braintreeTokenController = async (req, res) => {
   try {
+    const response = await new Promise((resolve, reject) => {
     gateway.clientToken.generate({}, function (err, response) {
+      console.log("token"+gateway.clientToken);
       if (err) {
-        res.status(500).send(err);
+        reject(err);
       } else {
-        res.send(response);
+        resolve(response);
       }
     });
+  });
   } catch (error) {
-    console.log(error);
+    console.log("Error"+error);
+    res.status(500).send("error"+error);
   }
 };
 

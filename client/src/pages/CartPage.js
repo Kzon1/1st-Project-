@@ -51,13 +51,14 @@ const CartPage = () => {
     try {
       const { data } = await axios.get("/api/v1/product/braintree/token");
       setClientToken(data?.clientToken);
-      console.log(data);
+      console.log("toen",data);
     } catch (error) {
-      console.log(error);
+      console.log("error",error);
     }
   };
   useEffect(() => {
     getToken();
+    console.log("token"+clientToken);
   }, [auth?.token]);
 
   //handle payments
@@ -65,6 +66,7 @@ const CartPage = () => {
     try {
       setLoading(true);
       const { nonce } = await instance.requestPaymentMethod();
+      console.log("nonce",data);
       // eslint-disable-next-line no-unused-vars
       const { data } = await axios.post("/api/v1/product/braintree/payment", {
         nonce,
@@ -76,7 +78,7 @@ const CartPage = () => {
       navigate("/dashboard/user/orders");
       toast.success("Payment Completed Successfully ");
     } catch (error) {
-      console.log(error);
+      console.log("eror"+error);
       setLoading(false);
     }
   };
