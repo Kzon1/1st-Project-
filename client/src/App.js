@@ -1,61 +1,66 @@
-import { Route, Routes } from "react-router-dom";
-import AdminRoute from "./components/Routes/AdminRoute";
-import PrivateRoute from "./components/Routes/Private";
-import About from "./pages/About";
-import AdminDashboard from "./pages/Admin/AdminDashboard";
-import AdminOrders from "./pages/Admin/AdminOrders";
-import CreateCategory from "./pages/Admin/CreateCategory";
-import CreateProduct from "./pages/Admin/CreateProduct";
-import Products from "./pages/Admin/Products";
-import UpdateProduct from "./pages/Admin/UpdateProduct";
-import Users from "./pages/Admin/Users";
-import ForgotPasssword from "./pages/Auth/ForgotPasssword";
-import Login from "./pages/Auth/Login";
-import Register from "./pages/Auth/Register";
-import CartPage from "./pages/CartPage";
-import Categories from "./pages/Categories";
-import CategoryProduct from "./pages/CategoryProduct";
-import Contact from "./pages/Contact";
-import HomePage from "./pages/HomePage";
-import Pagenotfound from "./pages/Pagenotfound";
-import Policy from "./pages/Policy";
-import ProductDetails from "./pages/ProductDetails";
-import Search from "./pages/Search";
-import Dashboard from "./pages/user/Dashboard";
-import Orders from "./pages/user/Orders";
-import Profile from "./pages/user/Profile";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import Layout from './components/Layout';
+import HomePage from './pages/HomePage';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Cart from './pages/Cart';
+import { OpenRoutes } from './routing/OpenRoutes';
+import { PrivateRoutes } from './routing/PrivateRoutes';
+import AdminDashboard from './pages/AdminDashboard';
+import ListUsers from './pages/ListUser';
+import AddUser from './pages/AddUser';
+import ListCategory from './pages/ListCategory';
+import AddCategory from './pages/AddCategory';
+import AddProduct from './pages/AddProduct';
+import ListProduct from './pages/ListProduct';
+import ProductDetails from './pages/ProductDetails';
+import Checkout from './pages/Checkout';
+import CheckoutSuccess from './pages/CheckoutSuccess';
+import Category from './pages/Category';
+import Order from './pages/Order';
+import UserDashbboard from './pages/UserDashboard';
+import MyOrder from './pages/MyOrder';
+import UpdateUser from './pages/UpdateUser';
+import Contact from './pages/Contact';
+import Policy from './pages/Policy';
+import About from './pages/About';
+
+
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/product/:slug" element={<ProductDetails />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/cart" element={<CartPage />} />
-        <Route path="/category/:slug" element={<CategoryProduct />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/dashboard" element={<PrivateRoute />}>
-          <Route path="user" element={<Dashboard />} />
-          <Route path="user/orders" element={<Orders />} />
-          <Route path="user/profile" element={<Profile />} />
-        </Route>
-        <Route path="/dashboard" element={<AdminRoute />}>
-          <Route path="admin" element={<AdminDashboard />} />
-          <Route path="admin/create-category" element={<CreateCategory />} />
-          <Route path="admin/create-product" element={<CreateProduct />} />
-          <Route path="admin/product/:slug" element={<UpdateProduct />} />
-          <Route path="admin/products" element={<Products />} />
-          <Route path="admin/users" element={<Users />} />
-          <Route path="admin/orders" element={<AdminOrders />} />
-        </Route>
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPasssword />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/policy" element={<Policy />} />
-        <Route path="*" element={<Pagenotfound />} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Layout/> }>
+            <Route index element={<HomePage/>}/>
+            <Route path='category/:id' element={<Category/>}/>
+            <Route path='login' element={<OpenRoutes><Login/></OpenRoutes>}/>
+            <Route path='about' element={<><About/></>}/>
+            <Route path='policy' element={<><Policy/></>}/>
+            <Route path='contact' element={<><Contact/></>}/>
+            <Route path='register' element={<OpenRoutes><Register/></OpenRoutes>}/>
+            <Route path='cart' element={<PrivateRoutes><Cart/></PrivateRoutes>}/>
+            <Route path='checkout' element={<PrivateRoutes><Checkout/></PrivateRoutes>}/>
+            <Route path='checkout-success' element={<PrivateRoutes><CheckoutSuccess/></PrivateRoutes>}/>
+            <Route path='product/:id' element={<ProductDetails/>}/>
+            <Route path='dashboard/user' element={<PrivateRoutes><UserDashbboard/></PrivateRoutes>}/>
+            <Route path='/dashboard/user/profile' element={<PrivateRoutes><UpdateUser/></PrivateRoutes>}/>
+            <Route path='/dashboard/user/order' element={<PrivateRoutes><MyOrder/></PrivateRoutes>}/>
+            <Route path='dashboard/admin' element={<PrivateRoutes><AdminDashboard/></PrivateRoutes>}/>
+            <Route path='dashboard/admin/list-users' element={<PrivateRoutes><ListUsers/></PrivateRoutes>}/>
+            <Route path='dashboard/admin/add-user' element={<PrivateRoutes><AddUser/></PrivateRoutes>}/>
+            <Route path='dashboard/admin/update-user/:id' element={<PrivateRoutes><AddUser/></PrivateRoutes>}/>
+            <Route path='dashboard/admin/add-category' element={<PrivateRoutes><AddCategory/></PrivateRoutes>}/>
+            <Route path='dashboard/admin/list-category' element={<PrivateRoutes><ListCategory/></PrivateRoutes>}/>
+            <Route path='dashboard/admin/update-category/:id' element={<PrivateRoutes><AddCategory/></PrivateRoutes>}/>
+            <Route path='dashboard/admin/add-product' element={<PrivateRoutes><AddProduct/></PrivateRoutes>}/>
+            <Route path='dashboard/admin/list-products' element={<PrivateRoutes><ListProduct/></PrivateRoutes>}/>
+            <Route path='dashboard/admin/update-product/:id' element={<PrivateRoutes><AddProduct/></PrivateRoutes>}/>
+            <Route path='dashboard/admin/order' element={<PrivateRoutes><Order/></PrivateRoutes>}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

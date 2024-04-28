@@ -1,56 +1,38 @@
-import express from "express";
-import {
-  registerController,
-  loginController,
-  testController,
-  forgotPasswordController,
-  updateProfileController,
-  getOrdersController,
-  getAllOrdersController,
-  orderStatusController,
-} from "../controllers/authController.js";
-import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
+const express = require('express')
+const router = express.Router()
+const {createUser, loginUser, loginAdmin, getAllUsers, getsignUser, updateUser, 
+    deletesignUser, userCart, getUserCart, updateProductQuantityCart,
+    removeProductCart,
+    createOrder,
+    emptyCart,
+    getAllOrder,
+    editUser,
+    getMyOrder,
+    updateStatusOrder,} = require('../controllers/UserCtl.js')
+const {authMiddleware,isAdmin} = require('../middlewares/authMiddleware.js')
 
-//router object
-const router = express.Router();
+router.post('/register',createUser)
+router.post('/login',loginUser)
+router.post('/admin-login',loginAdmin)
+router.post('/add-cart',authMiddleware,userCart)
+router.post('/cart/create-order',authMiddleware,createOrder)
 
-//routing
-//REGISTER || METHOD POST
-router.post("/register", registerController);
 
-//LOGIN || POST
-router.post("/login", loginController);
+router.get('/all-users',getAllUsers)
+router.get('/get-user/:_id',authMiddleware,isAdmin, getsignUser)
+router.get('/get-cart',authMiddleware,getUserCart)
+router.get('/get-all-order',authMiddleware,isAdmin,getAllOrder)
+router.get('/getmyorders',authMiddleware,getMyOrder)
 
-//Forgot Password || POST
-router.post("/forgot-password", forgotPasswordController);
+router.put('/update-user/:_id',authMiddleware,updateUser)
+router.put('/edit-user/:_id',authMiddleware,editUser)
+router.put('/update-cart/:cartItemId/:productId/:newQuantity',authMiddleware,updateProductQuantityCart)
+router.put('/update-order/:_id/:status',authMiddleware,isAdmin,updateStatusOrder)
 
-//test routes
-router.get("/test", requireSignIn, isAdmin, testController);
 
-//protected User route auth
-router.get("/user-auth", requireSignIn, (req, res) => {
-  res.status(200).send({ ok: true });
-});
-//protected Admin route auth
-router.get("/admin-auth", requireSignIn, isAdmin, (req, res) => {
-  res.status(200).send({ ok: true });
-});
+router.delete('/delete-user/:_id',authMiddleware,isAdmin,deletesignUser)
+router.delete('/delete-cart/:cartItemId',authMiddleware,removeProductCart)
+router.delete('/empty-cart',authMiddleware,emptyCart)
 
-//update profile
-router.put("/profile", requireSignIn, updateProfileController);
 
-//orders
-router.get("/orders", requireSignIn, getOrdersController);
-
-//all orders
-router.get("/all-orders", requireSignIn, isAdmin, getAllOrdersController);
-
-// order status update
-router.put(
-  "/order-status/:orderId",
-  requireSignIn,
-  isAdmin,
-  orderStatusController
-);
-
-export default router;
+module.exports = router

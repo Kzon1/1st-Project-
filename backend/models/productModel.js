@@ -1,41 +1,39 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose'); // Erase if already required
 
-const productSchema = new mongoose.Schema(
-  {
-    name: {
-      type: String,
-      required: true,
+// Declare the Schema of the Mongo model
+var productSchema = new mongoose.Schema({
+    title:{
+        type:String,
+        required:true,
+        trim : true
     },
-    slug: {
-      type: String,
-      required: true,
+    slug:{
+        type:String,
+        required:true,
+        unique:true,
+        lowercase : true
     },
-    description: {
-      type: String,
-      required: true,
+    description:{
+        type:String,
+        required:true,
     },
-    price: {
-      type: Number,
-      required: true,
+    price:{
+        type:Number,
+        required:true,
     },
-    category: {
-      type: mongoose.ObjectId,
-      ref: "Category",
-      required: true,
+    category:{ // loại sản phẩm
+        type:String,
+        required : true
     },
-    quantity: {
-      type: Number,
-      required: true,
+    quantity : {
+        type:Number,
+        required : true
     },
-    photo: {
-      data: Buffer,
-      contentType: String,
-    },
-    shipping: {
-      type: Boolean,
-    },
-  },
-  { timestamps: true }
-);
+    images :[{
+        public_id:String,
+        url:String
+    }],
+},{timestamps:true});
 
-export default mongoose.model("Products", productSchema);
+//Export the model
+module.exports = mongoose.model('Product', productSchema);

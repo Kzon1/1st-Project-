@@ -1,25 +1,80 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose"); // Erase if already require
 
-const orderSchema = new mongoose.Schema(
+// Declare the Schema of the Mongo model
+var orderSchema = new mongoose.Schema(
   {
-    products: [
-      {
-        type: mongoose.ObjectId,
-        ref: "Products",
+    user : {
+      type : mongoose.Schema.Types.ObjectId,
+      ref : "User",
+      require: true 
+    },
+    shippingInfo:{
+      name : {
+        type : String,
+        require:true
       },
+      address : {
+        type : String,
+        require:true
+      },
+      city : {
+        type : String,
+        require:true
+      },
+      country : {
+        type : String,
+        require:true
+      },
+      state : {
+        type : String,
+        require:true
+      },
+      other : {
+        type : String,
+        require:true
+      },
+      pincode : {
+        type : Number,
+        require:true
+      },
+    },
+    orderItems:[
+      {
+        productId : {
+          type : mongoose.Schema.Types.ObjectId,
+          ref:"Product",
+          require : true
+        },
+        quantity:{
+          type : Number,
+          require : true
+        },
+        price:{
+          type : Number,
+          require : true
+        },
+      }
     ],
-    payment: {},
-    buyer: {
-      type: mongoose.ObjectId,
-      ref: "users",
+    
+    totalPrice : {
+      type :Number ,
+      require:true
     },
-    status: {
-      type: String,
-      default: "Not Process",
-      enum: ["Not Process", "Processing", "Shipped", "deliverd", "cancel"],
+    orderStatus : {
+      type : String ,
+      default : "Cancelled",
+      enum : ['Cancalled',"COMPLETED"]
     },
+    status:{
+      type : String,
+      default: "Đang xử lý",
+      enum : ["Đang xử lý","Đang chuẩn bị hàng","Đang giao hàng","Giao hàng thành công"]
+    }
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
-export default mongoose.model("Order", orderSchema);
+//Export the model
+module.exports = mongoose.model("Order", orderSchema);
