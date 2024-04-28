@@ -43,7 +43,7 @@ const ButtonWrapper = ({ currency,showSpinner,amount,payload}) => {
                     actions.order.capture().then(async(res)=>{
                         const orderUser = axios.post(`${base_url}user/cart/create-order`,payload,config)
                         if(res.status ==="COMPLETED"){
-                            toast.success("Thanh toán thành công")
+                            toast.success("Payment Success !")
                             d(emptycart())
                             navigate("/checkout-success")
 

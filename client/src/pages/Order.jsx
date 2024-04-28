@@ -78,7 +78,7 @@ const Order = () => {
                                     
             totalprice: new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'USD' }).format(orderState[i]?.totalPrice),
             status: orderState[i]?.orderStatus === "COMPLETED" ? 
-                (<p className='mb-0'>Đã thanh toán</p>) :(<p>Thanh toán khi nhận hành</p>) ,
+                (<p className='mb-0'>Paid</p>) :(<p></p>) ,
             action: (
                     <>
                         <select 

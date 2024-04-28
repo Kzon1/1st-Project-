@@ -45,18 +45,18 @@ export default function MyOrder() {
             key: i+1,
             user: (
                 <div>
-                    <p>Tên : {orderState[i]?.user?.name}</p>
-                    <p>Số điện thoại : {orderState[i]?.user?.mobile}</p>
-                    <p>Địa chỉ : {orderState[i]?.shippingInfo?.address}</p>
-                    <p>Quốc gia : {orderState[i]?.shippingInfo?.country}</p>
+                    <p>Name : {orderState[i]?.user?.name}</p>
+                    <p>Phone Number : {orderState[i]?.user?.mobile}</p>
+                    <p>Andress : {orderState[i]?.shippingInfo?.address}</p>
+                    <p>Country : {orderState[i]?.shippingInfo?.country}</p>
                 </div>
             ),
             products: (
                     orderState[i]?.orderItems && orderState[i]?.orderItems?.map((e,index)=>(
                     <div key={index} className='mb-4'>
-                        <p>Tên sản phẩm : {e?.productId?.title}</p>
-                        <p>Số lượng đặt hàng : {e?.quantity}</p>
-                        <p>Giá : {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(e?.productId?.price)}                                                                                                                                                        
+                        <p>Name : {e?.productId?.title}</p>
+                        <p>Quantity : {e?.quantity}</p>
+                        <p>Price : {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'USD' }).format(e?.productId?.price)}                                                                                                                                                        
                         </p>
                     </div>
                     ))
@@ -64,7 +64,7 @@ export default function MyOrder() {
                                     
             totalprice: orderState[i]?.totalPrice,
             status: orderState[i]?.orderStatus === "COMPLETED" ? 
-                (<p className='mb-0'>Đã thanh toán</p>) :(<p>Thanh toán khi nhận hành</p>),
+                (<p className='mb-0'>Paid</p>) :(<p></p>),
                 action : (
                   <div>
                       <p>

@@ -8,7 +8,7 @@ const Footer = () => {
                     <div className="row">
                         <div className="col-12">
                             <p className='text-center mb-0 text-white'>
-                                &copy;{new Date().getFullYear()} - Powered by Developer's AnhTuan
+                                &copy;{new Date().getFullYear()} - Powered by Developer's Kzon 
                             </p>
                         </div>
                         <div className="col-12 d-flex align-items-center justify-content-center">

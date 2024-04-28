@@ -67,8 +67,8 @@ var orderSchema = new mongoose.Schema(
     },
     status:{
       type : String,
-      default: "Đang xử lý",
-      enum : ["Đang xử lý","Đang chuẩn bị hàng","Đang giao hàng","Giao hàng thành công"]
+      default: "Processing",
+      enum : ["Processing","Preparing goods","Delivering","Successful delivery"]
     }
   },
   {

@@ -56,7 +56,7 @@ const Checkout = () => {
                     <div className="col-7">
                         <div className="checkout-left-data">
                             <h4 className="title total">Contact Information</h4>
-                            <p className="user-details total">AnhTuan ( minmaxtuan@gmail.com )</p>
+                            <p className="user-details total">Teamdev( Pastover143@gmail.com )</p>
                             <h4 className='mb-3'>Shipping Address</h4>
                             <form onSubmit={formik.handleSubmit} className='d-flex gap-15 flex-wrap justify-content-between' action="">
                                 <div className="w-100">
@@ -215,7 +215,7 @@ const Checkout = () => {
                                         <Link className='text-dark' to='/cart'><IoMdArrowBack className='me-2'/>
                                         Return To Cart
                                         </Link>
-                                        <Link to='/product' className='btn btn-primary'>Continue To Shipping</Link>
+                                        
                                         <button className='btn btn-primary' type="submit" onClick={()=>{
                                             setTouch(true)
                                         }}>Orders</button>
