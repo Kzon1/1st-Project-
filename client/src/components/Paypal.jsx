@@ -41,12 +41,12 @@ const ButtonWrapper = ({ currency,showSpinner,amount,payload}) => {
             }
                 onApprove={(data,actions)=>{
                     actions.order.capture().then(async(res)=>{
+                        // console.log("payload",payload)
                         const orderUser = axios.post(`${base_url}user/cart/create-order`,payload,config)
                         if(res.status ==="COMPLETED"){
                             toast.success("Payment Success !")
                             d(emptycart())
                             navigate("/checkout-success")
-
                         }
                     })
                 }}

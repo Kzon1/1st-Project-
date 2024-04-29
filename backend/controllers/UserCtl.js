@@ -295,22 +295,24 @@ const updateProductQuantityCart=async(req,res)=>{
 const createOrder = async(req,res)=>{
     const {shippingInfo,orderItems,totalPrice} = req.body
     const {_id} = req.user
-    console.log(shippingInfo,orderItems,totalPrice,_id)
-    try{
-        const order = await orderModel.create({
-            shippingInfo,orderItems,totalPrice,orderStatus:"COMPLETED", user:_id
-        })
-        res.json({
-            order,
-            success : true
-        })
-    }catch(error){
-        console.log(error)
-        res.status(500).send({
-            success : false,
-            message : "create order user error !"
-        })
-    }
+    console.log("alo",shippingInfo,orderItems,totalPrice,_id)
+    // console.log(shippingInfo,orderItems,totalPrice,_id)
+    // try{
+    //     const order = await orderModel.create({
+    //         shippingInfo,orderItems,totalPrice,orderStatus:"COMPLETED", user:_id
+    //     })
+    //     res.json({
+    //         shippingInfo,
+    //         order,
+    //         success : true
+    //     })
+    // }catch(error){
+    //     console.log(error)
+    //     res.status(500).send({
+    //         success : false,
+    //         message : "create order user error !"
+    //     })
+    // }
 }
 // empty to cart
 const emptyCart = async(req,res)=>{

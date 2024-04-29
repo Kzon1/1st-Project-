@@ -62,7 +62,7 @@ export default function AddUser() {
                     <AdminMenu/>
                 </div>
                 <div className='col-md-9'>
-                    <h3 className='mb-4 title'>{id !== undefined ? "Update":"Add"} User</h3>
+                    <h3 className='mb-4 title'>{id !== undefined ? "Update":"Create"} User</h3>
                     <div className="">
                         <form action="" onSubmit={formik.handleSubmit}>
                             <CustomInput 

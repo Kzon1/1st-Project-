@@ -82,7 +82,7 @@ const AddProduct = () => {
                 <AdminMenu/>
             </div>
             <div className='col-md-9'>
-                <h3 className='mb-4 title'>{id !== undefined ? "Update":"Add"} User</h3>
+                <h3 className='mb-4 title'>{id !== undefined ? "Update":"Create"} Product</h3>
                 <div className="">
                     <form
                 onSubmit={formik.handleSubmit}

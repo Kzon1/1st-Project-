@@ -44,7 +44,7 @@ export default function UpdateUser() {
                     <UserMenu/>
                 </div>
                 <div className='col-md-9'>
-                    <h3 className='mb-4 title'>update User</h3>
+                    <h3 className='mb-4 title'>Update User</h3>
                     <div className="">
                         <form action="" onSubmit={formik.handleSubmit}>
                             <CustomInput 

@@ -46,6 +46,7 @@ const Checkout = () => {
         onSubmit: values => {
             // dispatch(login(values))
             setShippingInfo(values)
+            // alert(JSON.stringify(values, null, 2));
         },
     });
 
@@ -225,7 +226,7 @@ const Checkout = () => {
                                             <div className='mt-4'>
                                                 <Paypal amount={totalAmount+5} payload={{
                                                 shippingInfo:shippingInfo,
-                                                orderItems:cartState,totalPrice:totalAmount+5}}/>
+                                                orderItems:cartState,totalPrice:totalAmount+500}}/>
                                             </div>
                                         )
                                     }
@@ -267,7 +268,7 @@ const Checkout = () => {
                             </div>
                             <div className="d-flex justify-content-between align-items-center">
                                 <p className='mb-0 total'>Shipping:</p>
-                                <p className='mb-0 total-price'>$ 5</p>
+                                <p className='mb-0 total-price'>$ 500</p>
                             </div>
                         </div>
                         <div className="d-flex justify-content-between align-items-center border-bottom py-4">

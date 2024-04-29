@@ -21,9 +21,13 @@ const Login = () => {
         validationSchema:userSchema,
         onSubmit: values => {
             dispatch(login(values))
-            navigate('/')
+            
         },
     });
+    const user = useSelector(state=>state.auth?.user)
+    if(user!== null){
+        navigate('/')
+    }
   // form function
   return (
         <Container class1="login-wrapper home-wrapper-2 py-5"> 
@@ -58,7 +62,7 @@ const Login = () => {
                             ) : null}
                         </div>
                     <div className="">
-                        <div className="mt-3 d-flex justify-content-between gap-15 align-items-center">
+                    <div className="mt-3 d-flex justify-content-between gap-15 align-items-center">
                             <button className='btn btn-primary' type='submit'>Login</button>
                             <Link to='/register' className='border-0 button signup'>Register</Link>
                         </div>

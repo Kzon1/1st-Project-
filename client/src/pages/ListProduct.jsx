@@ -105,7 +105,7 @@ const ListProduct = () => {
                     </div>
                     <div className='col-md-9'>
                         <h1 className='text-center'>
-                            List Category
+                            List Product
                         </h1>
                         <div className="">
                             <Table  columns={columns} dataSource={data1} />

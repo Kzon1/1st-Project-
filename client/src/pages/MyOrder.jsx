@@ -45,8 +45,8 @@ export default function MyOrder() {
             key: i+1,
             user: (
                 <div>
-                    <p>Name : {orderState[i]?.user?.name}</p>
-                    <p>Phone Number : {orderState[i]?.user?.mobile}</p>
+                    <p>Name : {orderState[i]?.shippingInfo?.name}</p>
+                    {/* <p>Phone Number : {orderState[i]?.user?.mobile}</p> */}
                     <p>Andress : {orderState[i]?.shippingInfo?.address}</p>
                     <p>Country : {orderState[i]?.shippingInfo?.country}</p>
                 </div>
