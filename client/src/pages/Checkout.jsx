@@ -22,25 +22,19 @@ const Checkout = () => {
     console.log(shippingInfo)
 
     let userSchema = Yup.object().shape({
-        firstName: Yup.string().required('firstName is Required'), //required là hiển thị dòng lỗi phía dưới của input khi dữ liệu trống
-        lastName: Yup.string().required('lastName is Required'), //required là hiển thị dòng lỗi phía dưới của input khi dữ liệu trống
+        name: Yup.string().required('name is Required'), //required là hiển thị dòng lỗi phía dưới của input khi dữ liệu trống
         address: Yup.string().required('address is Required'), //required là hiển thị dòng lỗi phía dưới của input khi dữ liệu trống
-        state: Yup.string().required('state is Required'), //required là hiển thị dòng lỗi phía dưới của input khi dữ liệu trống
         country: Yup.string().required('country is Required'),
         city: Yup.string().required('city is Required'),
         pincode: Yup.string().required('pincode is Required'),
-        orther: Yup.string().required('orther is Required'),
     });
     const formik = useFormik({
         initialValues: {
-            firstName: "",
-            lastName:"",
+            name: "",
             address:"",
-            state:"",
             country:"",
             pincode:"",
             city:"",
-            orther:"",
         },
         validationSchema:userSchema,
         onSubmit: values => {
@@ -94,37 +88,21 @@ const Checkout = () => {
                                 <div className="flex-grow-1">
                                     <input 
                                         type="text" 
-                                        placeholder='First Name ...' 
+                                        placeholder='Name ...' 
                                         name="" 
                                         className='form-control' 
                                         id="" 
-                                        onChange={formik.handleChange("firstName")}
-                                        onBlur={formik.handleBlur("firstName")}
-                                        value={formik.values.firstName}
+                                        onChange={formik.handleChange("name")}
+                                        onBlur={formik.handleBlur("name")}
+                                        value={formik.values.name}
                                         />
                                     <div className="error">
-                                        {formik.touched.firstName && formik.errors.firstName ? (
-                                            <div>{formik.errors.firstName}</div>
+                                        {formik.touched.name && formik.errors.name ? (
+                                            <div>{formik.errors.name}</div>
                                         ) : null}
                                     </div>
                                 </div>
-                                <div className="flex-grow-1">
-                                    <input 
-                                        type="text" 
-                                        placeholder='Last Name ...' 
-                                        name="" 
-                                        className='form-control' 
-                                        id="" 
-                                        onChange={formik.handleChange("lastName")}
-                                        onBlur={formik.handleBlur("lastName")}
-                                        value={formik.values.lastName}
-                                        />
-                                    <div className="error">
-                                        {formik.touched.lastName && formik.errors.lastName ? (
-                                            <div>{formik.errors.lastName}</div>
-                                        ) : null}
-                                    </div>
-                                </div>
+                                
                                 <div className="w-100">
                                     <input 
                                         type="text" name="" 
@@ -141,23 +119,7 @@ const Checkout = () => {
                                         ) : null}
                                     </div>
                                 </div>
-                                <div className="w-100">
-                                    <input 
-                                        type="text" 
-                                        name="" 
-                                        placeholder='Apartment, Suite, etc' 
-                                        className='form-control' 
-                                        id="" 
-                                        onChange={formik.handleChange("orther")}
-                                        onBlur={formik.handleBlur("orther")}
-                                        value={formik.values.orther}
-                                        />
-                                    <div className="error">
-                                        {formik.touched.orther && formik.errors.orther ? (
-                                            <div>{formik.errors.orther}</div>
-                                        ) : null}
-                                    </div>
-                                </div>
+                               
                                 <div className="flex-grow-1">
                                     <input 
                                         type="text" 
@@ -175,25 +137,7 @@ const Checkout = () => {
                                         ) : null}
                                     </div>
                                 </div>
-                                <div className="flex-grow-1">
-                                    <select 
-                                        className='form-control form-select' 
-                                        name="" 
-                                        id=""
-                                        onChange={formik.handleChange("state")}
-                                        onBlur={formik.handleBlur("state")}
-                                        value={formik.values.state}
-                                        >
-                                        <option value='' selected disabled>Select State</option>
-                                        <option value='Haryana'>Haryana</option>
-                                        <option value='Mikazumi'>Mikazumi</option>
-                                    </select>
-                                    <div className="error">
-                                        {formik.touched.state && formik.errors.state ? (
-                                            <div>{formik.errors.state}</div>
-                                        ) : null}
-                                    </div>
-                                </div>
+                                
                                 <div className="flex-grow-1">
                                     <input 
                                         type="text" 

@@ -11,7 +11,7 @@ const createUser = async(req,res)=>{
     const {email} = req.body
     const exisitingUser = await userModel.findOne({email})
         if(exisitingUser){
-            return res.status(200).send({
+            return res.status(500).send({
                 success : true,
                 message : 'Alrealy register please login'
             })
@@ -297,22 +297,22 @@ const createOrder = async(req,res)=>{
     const {_id} = req.user
     console.log("alo",shippingInfo,orderItems,totalPrice,_id)
     // console.log(shippingInfo,orderItems,totalPrice,_id)
-    // try{
-    //     const order = await orderModel.create({
-    //         shippingInfo,orderItems,totalPrice,orderStatus:"COMPLETED", user:_id
-    //     })
-    //     res.json({
-    //         shippingInfo,
-    //         order,
-    //         success : true
-    //     })
-    // }catch(error){
-    //     console.log(error)
-    //     res.status(500).send({
-    //         success : false,
-    //         message : "create order user error !"
-    //     })
-    // }
+    try{
+        const order = await orderModel.create({
+            shippingInfo,orderItems,totalPrice,orderStatus:"COMPLETED", user:_id
+        })
+        res.json({
+            shippingInfo,
+            order,
+            success : true
+        })
+    }catch(error){
+        console.log(error)
+        res.status(500).send({
+            success : false,
+            message : "create order user error !"
+        })
+    }
 }
 // empty to cart
 const emptyCart = async(req,res)=>{

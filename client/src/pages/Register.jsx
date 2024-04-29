@@ -27,9 +27,10 @@ const Register = () => {
         validationSchema:userSchema,
         onSubmit: values => {
             dispatch(register(values))
-            navigate('/login')
+            navigate('/')
         },
     });
+    const user = useSelector(state=>state.auth.register)
   // form function
   return (
         <Container class1="login-wrapper home-wrapper-2 py-5"> 

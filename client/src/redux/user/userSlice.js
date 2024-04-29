@@ -121,6 +121,7 @@ export const resetState = createAction("Reset_all");
 const initialState = {
     user : getTokenFromLocalStorage,
     udUse:"",
+    register:"",
     auser:"",
     allUser:"",
     loginUser:"",
@@ -150,9 +151,9 @@ export const authSlice = createSlice({
             state.isLoading = false;
             state.isError = false;
             state.isSuccess = true;
-            state.user=action.payload
+            state.register=action.payload
             if(state.isSuccess == true){
-                toast.info("User create success")
+                toast.info("Create account success")
             }
         })
         .addCase(register.rejected,(state,action)=>{
@@ -161,7 +162,7 @@ export const authSlice = createSlice({
             state.isSuccess = false;
             state.message = action.error
             if(state.isError == true){
-                toast.error(action.payload)
+                toast.error("Đăng ký thất bại")
             }
         })
 

@@ -9,11 +9,7 @@ var orderSchema = new mongoose.Schema(
       require: true 
     },
     shippingInfo:{
-      firstName : {
-        type : String,
-        require:true
-      },
-      lastName : {
+      name : {
         type : String,
         require:true
       },
@@ -26,14 +22,6 @@ var orderSchema = new mongoose.Schema(
         require:true
       },
       country : {
-        type : String,
-        require:true
-      },
-      state : {
-        type : String,
-        require:true
-      },
-      other : {
         type : String,
         require:true
       },

@@ -4,9 +4,9 @@ const cloudinary = require("cloudinary")
 // điều chỉnh config 
 cloudinary.config({
     //bỏ vào .env
-    cloud_name:"ddgdnyzcu",
-    api_key:"274546815151551",
-    api_secret : "XanUExfgVCov4KdVJYiHdvfpyqc"
+    cloud_name:"dvetdpyce",
+    api_key:"931445996415429",
+    api_secret : "v9ojr5YDIM1Q61Z2GFlPskgLpjw"
 })
 
 // cho phép upload ảnh lên cloudinary
