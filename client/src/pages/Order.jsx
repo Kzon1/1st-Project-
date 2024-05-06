@@ -24,7 +24,7 @@ const columns = [
     dataIndex: 'products',
   },
   {
-    title: 'Total Price',
+    title: 'Total Deposit',
     dataIndex: 'totalprice',
   },
   {
@@ -78,7 +78,7 @@ const Order = () => {
                                     
             totalprice: new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'USD' }).format(orderState[i]?.totalPrice),
             status: orderState[i]?.orderStatus === "COMPLETED" ? 
-                (<p className='mb-0'>Paid</p>) :(<p></p>) ,
+                (<p className='mb-0'>Deposit has been paid</p>) :(<p></p>) ,
             action: (
                     <>
                         <select 

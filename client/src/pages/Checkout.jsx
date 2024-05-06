@@ -10,6 +10,7 @@ const Checkout = () => {
     const dispatch = useDispatch()
     const cartState = useSelector(state=>state.auth?.cartUser)
     const [totalAmount,setTotalAmount]=useState(null)
+    const [totalDeposit,setTotalDeposit] = useState(null)
     const [shippingInfo,setShippingInfo] = useState(null) 
     const [touch,setTouch] = useState(false) 
     useEffect(()=>{
@@ -17,7 +18,9 @@ const Checkout = () => {
         for(let i = 0;i < cartState?.length ;i++){
             sum += (Number(cartState[i]?.quantity * cartState[i]?.price))
             setTotalAmount(sum)
+            setTotalDeposit(sum * 0.25);
         }
+    
     },[cartState])
     console.log(shippingInfo)
 
@@ -163,14 +166,14 @@ const Checkout = () => {
                                         
                                         <button className='btn btn-primary' type="submit" onClick={()=>{
                                             setTouch(true)
-                                        }}>Orders</button>
+                                        }}>Deposit</button>
                                     </div>
                                     {
                                         touch==true&& (
                                             <div className='mt-4'>
-                                                <Paypal amount={totalAmount+5} payload={{
+                                                <Paypal amount={totalDeposit+500} payload={{
                                                 shippingInfo:shippingInfo,
-                                                orderItems:cartState,totalPrice:totalAmount+500}}/>
+                                                orderItems:cartState,totalPrice:totalDeposit+500}}/>
                                             </div>
                                         )
                                     }
@@ -218,6 +221,10 @@ const Checkout = () => {
                         <div className="d-flex justify-content-between align-items-center border-bottom py-4">
                             <h4 className='total'>Total:</h4>
                             <h5 className='total-price'>$ { totalAmount ? totalAmount + 5: 0}</h5>
+                        </div> 
+                        <div className="d-flex justify-content-between align-items-center border-bottom py-4">
+                            <h4 className='total'>Total Deposit:</h4>
+                            <h5 className='total-deposit'>$ { totalDeposit ? totalDeposit :0}</h5>
                         </div> 
                     </div>
                 </div>

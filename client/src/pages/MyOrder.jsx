@@ -18,7 +18,7 @@ const columns = [
     dataIndex: 'products',
   },
   {
-    title: 'Total Price',
+    title: 'Total Deposit',
     dataIndex: 'totalprice',
   },
   {
@@ -64,7 +64,7 @@ export default function MyOrder() {
                                     
             totalprice: orderState[i]?.totalPrice,
             status: orderState[i]?.orderStatus === "COMPLETED" ? 
-                (<p className='mb-0'>Paid</p>) :(<p></p>),
+                (<p className='mb-0'>Deposit has been paid</p>) :(<p></p>),
                 action : (
                   <div>
                       <p>
